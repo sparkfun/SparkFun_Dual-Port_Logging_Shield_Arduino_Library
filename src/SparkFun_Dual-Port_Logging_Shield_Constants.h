@@ -57,4 +57,4 @@ typedef enum
   SFE_DUAL_PORT_LOGGING_MODE_UNKNOWN
 } sfe_dual_port_logging_mode_e;
 
-#endif // /__SFE_SMOL_POWER_BOARD_CONSTANTS__
+#endif // /__SFE_DUAL_PORT_LOGGING_CONSTANTS__
