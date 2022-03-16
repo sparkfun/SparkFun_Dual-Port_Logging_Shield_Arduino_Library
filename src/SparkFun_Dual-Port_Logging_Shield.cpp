@@ -33,7 +33,7 @@
             Default is SFE_DUAL_PORT_LOGGING_DEFAULT_I2C_ADDRESS 0x51.
             Can be changed with setI2CAddress.
     @param  wirePort
-            The TwoWire (I2C) port used to communicate with the Power Board.
+            The TwoWire (I2C) port used to communicate with the Dual-Port Logging Shield.
             Default is Wire.
     @return True if communication with the Dual-Port Logging Shield was successful, otherwise false.
 */
