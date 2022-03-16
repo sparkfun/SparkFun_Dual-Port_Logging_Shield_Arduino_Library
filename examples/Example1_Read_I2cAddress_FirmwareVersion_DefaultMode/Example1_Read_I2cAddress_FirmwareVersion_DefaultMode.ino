@@ -20,7 +20,7 @@ void setup()
 {
   
   Serial.begin(115200); // Start the Serial port
-  Serial.println(F("Dual-Port microSD Shield Code Example"));
+  Serial.println(F("Dual-Port Logging Shield Code Example"));
 
   delay(1000); // Let the shield start up - it takes a full second
 
