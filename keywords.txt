@@ -1,0 +1,35 @@
+#######################################
+# Syntax Coloring Map for the SparkFun Dual-Port Logging Shield Arduino Library
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+sfeDualPortLoggingShield	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+isConnected	KEYWORD2
+getI2CAddress	KEYWORD2
+setI2CAddress	KEYWORD2
+getFirmwareVersion	KEYWORD2
+getDefaultMode	KEYWORD2
+setDefaultMode	KEYWORD2
+sleep	KEYWORD2
+spiMode	KEYWORD2
+sdioMode	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+SFE_DUAL_PORT_LOGGING_REGISTER_I2C_ADDRESS	LITERAL1
+SFE_DUAL_PORT_LOGGING_REGISTER_FIRMWARE_VERSION	LITERAL1
+SFE_DUAL_PORT_LOGGING_REGISTER_DEFAULT_MODE	LITERAL1
+SFE_DUAL_PORT_LOGGING_REGISTER_SLEEP	LITERAL1
+SFE_DUAL_PORT_LOGGING_REGISTER_SPI_MODE	LITERAL1
+SFE_DUAL_PORT_LOGGING_REGISTER_SDIO_MODE	LITERAL1
