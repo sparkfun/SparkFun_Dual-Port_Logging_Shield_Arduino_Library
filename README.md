@@ -1,6 +1,6 @@
 # SparkFun Dual-Port Logging Shield Arduino Library
 
-[![SparkFun Thing Plus Dual-Port Logging Shield (DEV-19217)]()](https://www.sparkfun.com/products/19217)
+[![SparkFun Thing Plus Dual-Port Logging Shield (DEV-19217)](https://cdn.sparkfun.com/assets/parts/1/8/8/4/1/19217-SparkFun_Thing_Plus_Dual-Port_Logging_Shield-01.jpg)](https://www.sparkfun.com/products/19217)
 
 [*SparkFun Thing Plus Dual-Port Logging Shield (DEV-19217)*](https://www.sparkfun.com/products/19217)
 
