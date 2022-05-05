@@ -16,6 +16,8 @@
 
 sfeDualPortLoggingShield myShield;
 
+#define myWire Wire // Define which Wire port to use. Change this to Wire1 if you are using the Artemis Thing Plus or the expLoRaBLE
+
 void setup()
 {
   
@@ -24,19 +26,20 @@ void setup()
 
   delay(1000); // Let the shield start up - it takes a full second
 
-  Wire.begin(); // Start I2C
+  myWire.begin(); // Start I2C
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
   // Begin communication with the Dual-Port Logging Shield
   
-  bool success = myShield.begin(); // Use the default I2C address and Wire port
+  //bool success = myShield.begin(); // Use the default I2C address and Wire port
 
-  //bool success = myShield.begin(0x51, Wire); // Use a custom I2C address and/or port
+  bool success = myShield.begin(0x51, myWire); // Use a custom I2C address and/or port. The Artemis Thing Plus uses Wire1, not Wire
 
   if (!success)
   {
-    Serial.println(F("An error has occurred! Could not communicate with the Shield! Freezing..."));
+    Serial.println(F("An error has occurred! Could not communicate with the Shield!"));
+    Serial.println(F("Please try powering the board off and on again..."));
     while (1)
       ; // Do nothing more
   }

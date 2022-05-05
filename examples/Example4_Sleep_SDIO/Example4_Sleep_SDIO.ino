@@ -16,12 +16,11 @@
 
 sfeDualPortLoggingShield myShield;
 
-#include <SD.h>
+#define myWire Wire // Define which Wire port to use. Change this to Wire1 if you are using the Artemis Thing Plus or the expLoRaBLE
 
-//const int chipSelect = 10; // ** Change this to match the chip slect pin on your board **
 #define chipSelect A5 // ** Change this to match the chip slect pin on your board **
 
-File root;
+//const int chipSelect = 24; // ** On the Artemis Thing Plus: A5 is D24 **
 
 void setup()
 {
@@ -31,19 +30,20 @@ void setup()
 
   delay(1000); // Let the shield start up - it takes a full second
 
-  Wire.begin(); // Start I2C
+  myWire.begin(); // Start I2C
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
   // Begin communication with the Dual-Port Logging Shield
   
-  bool success = myShield.begin(); // Use the default I2C address and Wire port
+  //bool success = myShield.begin(); // Use the default I2C address and Wire port
 
-  //bool success = myShield.begin(0x51, Wire); // Use a custom I2C address and/or port
+  bool success = myShield.begin(0x51, myWire); // Use a custom I2C address and/or port
 
   if (!success)
   {
-    Serial.println(F("An error has occurred! Could not communicate with the Shield! Freezing..."));
+    Serial.println(F("An error has occurred! Could not communicate with the Shield!"));
+    Serial.println(F("Please try powering the board off and on again..."));
     while (1)
       ; // Do nothing more
   }
@@ -92,6 +92,8 @@ void loop()
     while (1)
       ;
   }
+
+  delay(1000); // Let the shield start up - it takes a full second
 
   Serial.println(F("The shield should now appear as a USB device"));
 
