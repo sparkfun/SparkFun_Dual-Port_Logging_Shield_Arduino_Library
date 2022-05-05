@@ -20,7 +20,7 @@ sfeDualPortLoggingShield myShield;
 
 #include <SD.h>
 
-#define chipSelect A5 // ** Change this to match the chip select pin on your board **
+#define chipSelect A5 // ** Change this to match the chip slect pin on your board **
 
 //const int chipSelect = 24; // ** On the Artemis Thing Plus: A5 is D24 **
 
@@ -52,27 +52,6 @@ void setup()
       ; // Do nothing more
   }
 
-// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-  // Get (read) the default mode
-  //
-  // Returns SFE_DUAL_PORT_LOGGING_MODE_UNKNOWN if the read failed
-  // SFE_DUAL_PORT_LOGGING_MODE_SPI  = Thing Plus / Arduino (SPI) mode
-  // SFE_DUAL_PORT_LOGGING_MODE_SDIO = USB "thumb drive" (SDIO) mode
-
-  sfe_dual_port_logging_mode_e defaultMode = myShield.getDefaultMode();
-
-  if (defaultMode == SFE_DUAL_PORT_LOGGING_MODE_UNKNOWN)
-    Serial.println(F("An error has occurred! Could not communicate with the Shield!"));
-  else
-  {
-    Serial.print(F("The Shield's Default Mode is "));
-    if (defaultMode == SFE_DUAL_PORT_LOGGING_MODE_SPI)
-      Serial.println(F("SPI (Thing Plus / Arduino mode)"));
-    else // if (defaultMode == SFE_DUAL_PORT_LOGGING_MODE_SDIO)
-      Serial.println(F("SDIO (USB \"thumb drive\" mode)"));
-  }
-
 }
 
 void loop()
@@ -80,11 +59,11 @@ void loop()
   
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-  // Put the shield into USB "thumb drive" (SDIO) mode
+  // Put the shield into deep sleep
 
-  Serial.println(F("Putting the shield into SDIO (USB \"thumb drive\") mode"));
+  Serial.println(F("Putting the shield into deep sleep"));
 
-  bool result = myShield.sdioMode();
+  bool result = myShield.sleep();
 
   if (!result)
   {
@@ -92,10 +71,6 @@ void loop()
     while (1)
       ;
   }
-
-  delay(2000); // Be kind. Wait two seconds
-  
-  Serial.println(F("The shield should now appear as a USB device"));
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
@@ -109,7 +84,7 @@ void loop()
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-  // Put the shield into Thing Plus / Arduino (SPI) mode
+  // Wake the shield and put it into Thing Plus / Arduino (SPI) mode
 
   Serial.println(F("Putting the shield into SPI (Thing Plus / Arduino) mode"));
 
@@ -122,8 +97,8 @@ void loop()
       ;
   }
 
-  delay(2000); // Be kind. Wait two seconds
-  
+  delay(1000); // Let the shield start up - it takes a full second
+
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
   // Use the SD Library to print the directory of files on SD card
@@ -144,7 +119,15 @@ void loop()
 
   printDirectory(root, 0);
 
-  delay(2000); // Be kind. Wait two seconds
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+  Serial.print(F("Waiting 5 seconds"));
+  for (int i = 0; i < 5; i++)
+  {
+    delay(1000);
+    Serial.print(F("."));
+  }
+  Serial.println();
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
