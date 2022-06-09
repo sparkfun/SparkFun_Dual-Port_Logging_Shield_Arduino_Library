@@ -1,6 +1,6 @@
 # SparkFun Dual-Port Logging Shield Arduino Library
 
-[![SparkFun Thing Plus Dual-Port Logging Shield (DEV-19217)](https://cdn.sparkfun.com/assets/parts/1/8/8/4/1/19217-SparkFun_Thing_Plus_Dual-Port_Logging_Shield-01.jpg)](https://www.sparkfun.com/products/19217)
+[![SparkFun Thing Plus Dual-Port Logging Shield (DEV-19217)](https://cdn.sparkfun.com/assets/parts/1/8/8/4/1/19217-SparkFun_Thing_Plus_Dual-Port_Logging_Shield-01a.jpg)](https://www.sparkfun.com/products/19217)
 
 [*SparkFun Thing Plus Dual-Port Logging Shield (DEV-19217)*](https://www.sparkfun.com/products/19217)
 
@@ -10,9 +10,9 @@ This library can be installed through the Arduino Library Manager: please search
 
 ## Repository Contents
 
+- **/docs** - Keywords from this library that will be highlighted in the Arduino IDE.
 - **/examples** - Example sketches for the library (.ino). Run these from the Arduino IDE.
 - **/src** - Source files for the library (.cpp, .h).
-- **keywords.txt** - Keywords from this library that will be highlighted in the Arduino IDE.
 - **library.properties** - General library properties for the Arduino package manager.
 - **LICENSE.md** - Contains the license information
 
